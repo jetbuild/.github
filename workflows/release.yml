@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Check release target commitish
         run: |
-          if [[ "${{ github.event.release.target_commitish }}" != "main" ]]; then
-            echo "::error::Release target commitish is not main." && exit 1
+          if [[ "${{ github.event.release.target_commitish }}" != ${{ github.event.repository.default_branch }} ]]; then
+            echo "::error::Release target commitish is not default branch." && exit 1
           fi
       - name: Check release tag name
         run: |
