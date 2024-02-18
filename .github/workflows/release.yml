@@ -1,8 +1,11 @@
 name: Release
 on:
-  release:
-    types:
-      - published
+  workflow_call:
+    secrets:
+      DOCKER_REGISTRY_USERNAME:
+        required: true
+      DOCKER_REGISTRY_TOKEN:
+        required: true
 jobs:
   release:
     name: Release
@@ -54,6 +57,7 @@ jobs:
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           annotations: ${{ steps.meta.outputs.annotations }}
           provenance: mode=max
           sbom: true
