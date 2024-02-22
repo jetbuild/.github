@@ -48,6 +48,9 @@ jobs:
           if [[ "${{ github.event.repository.name }}" == *"-component" ]]; then
             echo "DOCKER_FILE_PATH=./.github/docker-files/component.Dockerfile" >> "$GITHUB_ENV"
           fi
+      - name: Tree test
+        run: |
+          tree -a
       - name: Set up docker buildx
         uses: docker/setup-buildx-action@v3
       - name: Login to docker registry
