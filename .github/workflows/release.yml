@@ -46,7 +46,7 @@ jobs:
       - name: Set docker file path
         run: |
           if [[ "${{ github.event.repository.name }}" == *"-component" ]]; then
-            echo "DOCKER_FILE_PATH=./.github/docker-files/component.Dockerfile" >> "$GITHUB_ENV"
+            echo "DOCKER_FILE_PATH=.github/docker-files/component.Dockerfile" >> "$GITHUB_ENV"
           fi
       - name: Tree test
         run: |
