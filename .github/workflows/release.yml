@@ -69,7 +69,7 @@ jobs:
       - name: Dockerize
         uses: docker/build-push-action@v5
         with:
-          file: ${{ env.DOCKER_FILE_PATH }}
+          file: .github/docker-files/component.Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
