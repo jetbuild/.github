@@ -42,6 +42,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: jetbuild/.github
+          path: .github
       - name: Set docker file path
         run: |
           if [[ "${{ github.event.repository.name }}" == *"-component" ]]; then
@@ -68,8 +69,8 @@ jobs:
       - name: Dockerize
         uses: docker/build-push-action@v5
         with:
-          context: ./docker-files
-          file: ./docker-files/component.Dockerfile
+          context: ./.github
+          file: ./.github/docker-files/component.Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
