@@ -42,7 +42,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: jetbuild/.github
-          sparse-checkout: docker-files/component.Dockerfile
       - name: Set docker file path
         run: |
           if [[ "${{ github.event.repository.name }}" == *"-component" ]]; then
