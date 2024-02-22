@@ -69,7 +69,8 @@ jobs:
       - name: Dockerize
         uses: docker/build-push-action@v5
         with:
-          file: "{context}/component.Dockerfile"
+          context: .
+          file: ./component.Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
