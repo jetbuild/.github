@@ -46,7 +46,7 @@ jobs:
       - name: Set docker file path
         run: |
           if [[ "${{ github.event.repository.name }}" == *"-component" ]]; then
-            echo "DOCKER_FILE_PATH={context}/.github/docker-files/component.Dockerfile" >> "$GITHUB_ENV"
+            echo "DOCKER_FILE_PATH=./.github/docker-files/component.Dockerfile" >> "$GITHUB_ENV"
           fi
       - name: Tree test
         run: |
@@ -70,7 +70,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./.github
-          file: ./.github/docker-files/component.Dockerfile
+          file: ${{ env.DOCKER_FILE_PATH }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
